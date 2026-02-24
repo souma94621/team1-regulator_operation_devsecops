@@ -1,1 +1,1 @@
-# team1-politex-
+# team1 (ПК)
