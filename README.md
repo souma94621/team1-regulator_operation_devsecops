@@ -9,14 +9,15 @@
 * drone.registration.request - запрос на регистрацию дрона
 
 Поля:
+
 <code>request_id - идентификатор запроса
 timestamp - время отправки
 drone.drone_id - id дрона
 drone.model - модель
 drone.manufacturer - издатель
 firmware.version - версия прошивки</code> 
-Пример запроса:
 
+Пример запроса:
 <code>{
   "request_id": "550e8400-e29b-41d4-a716-446655440000",
   "timestamp": "2026-03-10T12:30:00Z",
