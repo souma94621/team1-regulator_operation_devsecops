@@ -139,3 +139,37 @@
   }
 }
 ```
+* regulator.info.request
+
+Поля:
+```json
+{
+  "request_id": "req-reg-check-001",
+  "timestamp": "2026-03-11T09:30:01Z",
+
+  "registration_number": "RU-BAS-0004521"
+}
+```
+* regulator.info.response
+
+Поля:
+```json
+{
+  "request_id": "req-reg-check-001",
+  "timestamp": "2026-03-11T09:30:02Z",
+
+  "status": "FOUND",
+
+  "drone": {
+    "registration_number": "RU-BAS-0004521",
+    "serial_number": "SN-998877",
+    "model": "DeliveryDrone-X2",
+    "manufacturer": "DroneTech"
+  },
+
+  "firmware": {
+    "version": "3.2.1",
+    "certificate_id": "CERT-FW-2026-001"
+  }
+}
+```
