@@ -3,6 +3,14 @@
 
 
 ### Топики
+* v1.operator.op1.certificate_request
+```
+
+```
+* v1.operator.op1.certificate_result
+```
+
+```
 * v1.Insurer.reg1.insurer-service.responses - в процессе
 
 Поля:
