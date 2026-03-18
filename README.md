@@ -1,7 +1,7 @@
 # team1 (ПК)
 Наша команда отвечает за:
 * регулятор
-* эксплуатанты
+* эксплуатант
 * DevSecOps
 
 ## Архитектруа регулятора:
@@ -10,7 +10,7 @@
 
 
 ### Топики
-* firmware.certification.request
+* v1.firmware.certification.request
 
 Поля:
 ```json
@@ -29,7 +29,7 @@
   "drone_type": "DeliveryDrone-X2"
 }
 ```
-* firmware.certificate.issued
+* v1.firmware.certificate.issued
 
 Поля:
 ```json
@@ -60,7 +60,7 @@
   }
 }
 ```
-* regulator.registration.request
+* v1.drone.registration.request
 
 Поля:
 ```json
@@ -80,7 +80,7 @@
   }
 }
 ```
-* regulator.registration.approved
+* v1.drone.registration.approved
 
 Поля:
 ```json
