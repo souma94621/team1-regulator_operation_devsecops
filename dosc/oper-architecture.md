@@ -66,6 +66,7 @@
 * v1.operator.op1.certificate_result
 ```
 {
+  "timestamp": "2026-03-18T17:50:00Z",
   "message_id": "op-cert-req-101",
   "operator_id": "OP-77",
   "certificate_status": "certified",
