@@ -5,7 +5,7 @@
 
 ### Топики
 * v1.Insurer.reg1.insurer-service.responses - в процессе
-* v1.Insurer.op1.insurer-service.requests - в процессе
+* v1.Insurer.reg1.insurer-service.requests - в процессе
 * v1.firmware.certification.request
 
 Поля:
