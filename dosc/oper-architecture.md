@@ -6,17 +6,48 @@
 
 Предлагаемый формат сообщения регистрации миссии:
 
-
 ```
 {
-  "drone_id": "DRN-77-XY",
-  "mission_id": "MSN-1024",
-  "mission_route": [
-    {"lat": 55.7558, "lon": 37.6173, "alt": 100},
-    {"lat": 55.7580, "lon": 37.6200, "alt": 120},
-    {"lat": 55.7600, "lon": 37.6300, "alt": 100}
-  ],
-  "timestamp": "2026-03-18T10:50:00Z"
+  "header": {
+    "version": "1.0",
+    "timestamp": "2026-03-18T10:55:00Z",
+    "message_id": "req-998877"
+  },
+  "body": {
+    "drone_id": "DRN-C2-4048",
+    "mission_id": "MSN-2026-ALPHA",
+    "operator_id": "OP-77",
+    "flight_parameters": {
+      "route": [
+        {"lat": 55.7558, "lon": 37.6173, "alt": 100},
+        {"lat": 55.7580, "lon": 37.6200, "alt": 120},
+        {"lat": 55.7600, "lon": 37.6300, "alt": 100}
+      ],
+      "max_altitude": 150,
+      "estimated_duration": 1800
+    },
+    "insurance_policy": "POL-55667788"
+  }
+}
+```
+Предлагаемый формат регистрации дрона:
+```
+{
+  "header": {
+    "version": "1.0",
+    "timestamp": "2026-03-18T11:05:00Z",
+    "message_id": "reg-drone-001"
+  },
+  "body": {
+    "drone_details": {
+      "serial_number": "SN-9988-GCS-2026",
+      "model": "CyberBird-V2",
+      "manufacturer": "DevSecOps_Labs",
+      "category": "C1",
+      "take_off_weight_grams": 1450
+    },
+    "hardware_signature": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
 }
 ```
 * v1.drone_port.orchestretor - в процессе
