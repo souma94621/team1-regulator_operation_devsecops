@@ -29,7 +29,7 @@
   "drone_type": "DeliveryDrone-X2"
 }
 ```
-* v1.firmware.certificate.issued
+* v1.firmware.certificate.result
 
 Поля:
 ```json
@@ -80,7 +80,7 @@
   }
 }
 ```
-* v1.drone.registration.approved
+* v1.drone.registration.result
 
 Поля:
 ```json
