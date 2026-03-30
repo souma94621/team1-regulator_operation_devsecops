@@ -21,12 +21,12 @@ cd team1-regulator_operation_devsecops/Regulator
 ```
 
 Создайте и активируйте виртуальное окружение:
-# Linux / Mac
+Linux / Mac
 ```
 python -m venv venv
 source venv/bin/activate
 ```
-# Windows
+Windows
 ```
 python -m venv venv
 venv\Scripts\activate
