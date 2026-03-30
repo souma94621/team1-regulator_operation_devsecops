@@ -21,26 +21,22 @@ cd team1-regulator_operation_devsecops/Regulator
 ```
 
 Создайте и активируйте виртуальное окружение:
-Linux / Mac
+### Linux / Mac
 ```
 python -m venv venv
 source venv/bin/activate
 ```
-Windows
+### Windows
 ```
 python -m venv venv
 venv\Scripts\activate
 ```
-Установите зависимости:
+2. Установите зависимости:
 ```
 pip install -r requirements.txt
 ```
 
-Конфигурация интеграции
-
-Внешняя система должна использовать директорию с кодом регулятора.
-
-Запуск
+3. Запуск
 ```
 python main.py
 ```
