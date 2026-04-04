@@ -7,15 +7,38 @@ import { motion } from "framer-motion";
 export default function Dashboard() {
   const [certId, setCertId] = useState("");
   const [result, setResult] = useState(null);
-
+}
   const verifyCert = async () => {
     // mock request
-    setResult({ status: "certified", valid: true });
-  };
+    const verifyCert = async () => {
+  const res = await fetch("http://localhost:8000/verify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      certificate_id: certId
+    })
+  });
+
+  const data = await res.json();
+  setResult(data.payload || data);
+};
 
   const revokeCert = async () => {
-    setResult({ status: "revoked", valid: false });
-  };
+  const res = await fetch("http://localhost:8000/revoke", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      certificate_id: certId
+    })
+  });
+
+  const data = await res.json();
+  setResult(data.payload || data);
+};
 
   return (
     <div className="p-6 grid gap-6">
