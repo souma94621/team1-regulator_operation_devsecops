@@ -6,19 +6,18 @@ from models import FirmwareRequest, FirmwareResult
 from certificate_manager import CertificateManager
 from security_test_runner import SecurityTestRunner
 from coverage_controller import CoverageController
-from broker_client import BrokerClient
+from broker.src.system_bus import SystemBus
 from config import Config
 
 # Настройка логирования для этого модуля
 logger = logging.getLogger(__name__)
 
 class FirmwareHandler:
-    def __init__(self, cert_manager: CertificateManager, test_runner: SecurityTestRunner,
-                 coverage_controller: CoverageController, broker: BrokerClient):
+    def __init__(self, cert_manager, test_runner, coverage_controller, bus: SystemBus):
         self.cert_manager = cert_manager
         self.test_runner = test_runner
         self.coverage_controller = coverage_controller
-        self.broker = broker
+        self.bus = bus
     
     async def handle(self, message):
         """
@@ -54,7 +53,7 @@ class FirmwareHandler:
                     certificate=None
                 )
                 # Публикуем как JSON строку
-                await self.broker.publish(Config.TOPIC_FIRMWARE_RESULT, result.model_dump_json())
+                self.bus.respond(message, result.model_dump())
                 return
             
             # 3. Создание сертификата (если тесты пройдены)
@@ -77,7 +76,7 @@ class FirmwareHandler:
             # Превращаем всю модель результата в JSON-строку
             response_json = result.model_dump_json()
             
-            await self.broker.publish(Config.TOPIC_FIRMWARE_RESULT, response_json)
+            self.bus.respond(message, result.model_dump())
             logger.info(f"+++ [SUCCESS] Firmware {req.request_id} certified as {cert.certificate_id} +++")
 
         except json.JSONDecodeError as e:
