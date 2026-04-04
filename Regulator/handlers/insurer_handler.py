@@ -2,14 +2,14 @@
 import logging
 from datetime import datetime
 from models import InsurerRequest, InsurerResponse
-from broker_client import BrokerClient
+from broker.src.system_bus import SystemBus
 from config import Config
 
 logger = logging.getLogger(__name__)
 
 class InsurerHandler:
-    def __init__(self, broker: BrokerClient):
-        self.broker = broker
+    def __init__(self, bus: SystemBus):
+        self.bus = bus
 
     async def handle(self, message: dict):
         try:
@@ -41,7 +41,7 @@ class InsurerHandler:
                 reason=None,
                 digital_signature="regulator_signature_placeholder"
             )
-            await self.broker.publish(Config.TOPIC_INSURER_RESPONSE, response.model_dump_json())
+            self.bus.respond(message, response.model_dump())
             logger.info(f"Insurance claim {req.message_id} approved")
         except Exception as e:
             logger.error(f"Error processing insurance claim: {e}", exc_info=True)
