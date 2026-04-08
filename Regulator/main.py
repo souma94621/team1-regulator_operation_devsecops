@@ -4,10 +4,6 @@ import os
 import json  # <-- ДОБАВИЛИ ИМПОРТ JSON
 from pathlib import Path
 
-# Подгружаем переменные окружения (.env)
-from dotenv import load_dotenv
-load_dotenv()
-
 from config import Config
 from logger import setup_logging
 from broker_factory import create_broker_adapter
