@@ -36,11 +36,12 @@ class CertificateManager:
             json.dump(
                 [cert.model_dump() for cert in self.certificates.values()],
                 f,
-                default=str
+                default=str,
+                indent = 2
             )
 
         with open(self.crl_storage_path, 'w') as f:
-            json.dump(self.crl, f)
+            json.dump(self.crl, f, indent = 2)
 
     def _normalize(self, data: dict) -> dict:
         """Приводим данные к одному виду (строки вместо datetime)."""

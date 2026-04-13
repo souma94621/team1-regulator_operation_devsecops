@@ -12,7 +12,7 @@ function Field({ label, value, onChange, type = "text", placeholder = "" }: {
 }) {
   return (
     <div style={{ marginBottom: 10 }}>
-      <label style={{ display: "block", fontSize: 11, fontFamily: "monospace", color: "#888", marginBottom: 3, textTransform: "uppercase", letterSpacing: 1 }}>
+      <label style={{ display: "block", fontSize: 11, fontFamily: "monospace", color: "#555", marginBottom: 3, textTransform: "uppercase", letterSpacing: 1 }}>
         {label}
       </label>
       <input
@@ -23,10 +23,10 @@ function Field({ label, value, onChange, type = "text", placeholder = "" }: {
         style={{
           width: "100%",
           padding: "8px 10px",
-          background: "#0d0d0d",
-          border: "1px solid #2a2a2a",
+          background: "#f5f5f5",
+          border: "1px solid #ddd",
           borderRadius: 4,
-          color: "#e0e0e0",
+          color: "#111",
           fontFamily: "monospace",
           fontSize: 13,
           boxSizing: "border-box",
@@ -47,7 +47,7 @@ function Section({ title, color, children, result, onSubmit, loading }: {
 }) {
   return (
     <div style={{
-      background: "#111",
+      background: "#fff",
       border: `1px solid ${color}33`,
       borderRadius: 8,
       padding: 20,
@@ -72,10 +72,10 @@ function Section({ title, color, children, result, onSubmit, loading }: {
         style={{
           marginTop: 10,
           padding: "9px 20px",
-          background: loading ? "#1a1a1a" : color + "22",
+          background: loading ? "#f0f0f0" : color + "15",
           border: `1px solid ${color}`,
           borderRadius: 4,
-          color: loading ? "#555" : color,
+          color: loading ? "#aaa" : color,
           fontFamily: "monospace",
           fontSize: 12,
           cursor: loading ? "not-allowed" : "pointer",
@@ -90,16 +90,16 @@ function Section({ title, color, children, result, onSubmit, loading }: {
         <pre style={{
           marginTop: 14,
           padding: 12,
-          background: "#0a0a0a",
-          border: "1px solid #1e1e1e",
+          background: "#f8f8f8",
+          border: "1px solid #e0e0e0",
           borderRadius: 4,
           fontSize: 11,
           fontFamily: "monospace",
           color: result?.result?.status === "CERTIFIED" || result?.result?.status === "APPROVED" || result?.result?.approved
-            ? "#4ade80"
+            ? "#16a34a"
             : result?.result?.status === "REJECTED"
-            ? "#f87171"
-            : "#aaa",
+            ? "#dc2626"
+            : "#333",
           overflow: "auto",
           maxHeight: 260,
           whiteSpace: "pre-wrap",
@@ -136,17 +136,6 @@ export default function Home() {
   });
   const [drResult, setDrResult] = useState<any>(null);
   const [drLoading, setDrLoading] = useState(false);
-
-  // Insurer
-  const [ins, setIns] = useState({
-    message_id: "ins-1",
-    insurer_id: "",
-    order_id: "",
-    amount: "",
-    incident_id: "",
-  });
-  const [insResult, setInsResult] = useState<any>(null);
-  const [insLoading, setInsLoading] = useState(false);
 
   const sendFirmware = async () => {
     setFwLoading(true);
@@ -203,42 +192,21 @@ export default function Home() {
     }
   };
 
-  const sendInsurer = async () => {
-    setInsLoading(true);
-    try {
-      const res = await fetch(`${API}/insurer`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message_id: ins.message_id,
-          insurer_id: ins.insurer_id,
-          order_id: ins.order_id,
-          amount: parseFloat(ins.amount) || 0,
-          incident_id: ins.incident_id,
-        }),
-      });
-      const data = await res.json();
-      setInsResult(data);
-    } finally {
-      setInsLoading(false);
-    }
-  };
-
   return (
     <main style={{
       minHeight: "100vh",
-      background: "#0a0a0a",
-      color: "#e0e0e0",
+      background: "#f0f0f0",
+      color: "#111",
       fontFamily: "monospace",
       padding: "30px 20px",
       maxWidth: 680,
       margin: "0 auto",
     }}>
       <div style={{ marginBottom: 30 }}>
-        <div style={{ fontSize: 10, color: "#444", letterSpacing: 3, textTransform: "uppercase", marginBottom: 6 }}>
+        <div style={{ fontSize: 10, color: "#888", letterSpacing: 3, textTransform: "uppercase", marginBottom: 6 }}>
           UAV REGULATORY SYSTEM
         </div>
-        <h1 style={{ margin: 0, fontSize: 22, fontWeight: 600, color: "#fff", letterSpacing: 1 }}>
+        <h1 style={{ margin: 0, fontSize: 22, fontWeight: 600, color: "#111", letterSpacing: 1 }}>
           Regulator Control Panel
         </h1>
       </div>
@@ -268,14 +236,6 @@ export default function Home() {
         />
       </Section>
 
-      {/* INSURER */}
-      <Section title="Insurance Check" color="#34d399" result={insResult} onSubmit={sendInsurer} loading={insLoading}>
-        <Field label="Message ID" value={ins.message_id} onChange={v => setIns(i => ({ ...i, message_id: v }))} />
-        <Field label="Insurer ID" value={ins.insurer_id} onChange={v => setIns(i => ({ ...i, insurer_id: v }))} placeholder="ins_company_001" />
-        <Field label="Order ID" value={ins.order_id} onChange={v => setIns(i => ({ ...i, order_id: v }))} placeholder="order-001" />
-        <Field label="Amount" value={ins.amount} onChange={v => setIns(i => ({ ...i, amount: v }))} type="number" placeholder="1000" />
-        <Field label="Incident ID" value={ins.incident_id} onChange={v => setIns(i => ({ ...i, incident_id: v }))} placeholder="incident-001" />
-      </Section>
     </main>
   );
 }
