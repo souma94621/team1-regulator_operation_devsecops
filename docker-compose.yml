@@ -2,7 +2,7 @@ services:
   regulator_component:
     build:
       context: ../..
-      dockerfile: systems/team1-regulator_operation_devsecops/src/regulator_component/docker/Dockerfile
+      dockerfile: systems/regulator/src/regulator_component/docker/Dockerfile
     profiles: ["kafka", "mqtt"]
     environment:
       - COMPONENT_ID=regulator_component
@@ -22,7 +22,7 @@ services:
   regulator_gateway:
     build:
       context: ../..
-      dockerfile: systems/team1-regulator_operation_devsecops/src/gateway/docker/Dockerfile
+      dockerfile: systems/regulator/src/gateway/docker/Dockerfile
     profiles: ["kafka", "mqtt"]
     environment:
       - SYSTEM_ID=regulator
