@@ -3,7 +3,6 @@
 
 * v1.firmware.certification.request
 
-Поля:
 ```json
 {
   "request_id": "req-fw-001",
@@ -22,7 +21,6 @@
 ```
 * v1.firmware.certificate.result
 
-Поля:
 ```json
 {
   "request_id": "req-fw-001",
@@ -53,7 +51,6 @@
 ```
 * v1.drone.registration.request
 
-Поля:
 ```json
 {
   "request_id": "req-drone-001",
@@ -73,7 +70,6 @@
 ```
 * v1.drone.registration.result
 
-Поля:
 ```json
 {
   "request_id": "req-drone-001",
@@ -96,7 +92,6 @@
 ```
 * v1.system.certification.request
 
-Поля:
 ```
 {
   "request_id": "req-sys-001",
@@ -111,7 +106,6 @@
 ```
 * v1.system.certification.result
 
-Поля:
 ```
 {
   "request_id": "req-sys-001",
