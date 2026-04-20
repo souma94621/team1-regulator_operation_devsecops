@@ -1,27 +1,6 @@
 ## Архитектура регулятора:
 ### Топики
-* v1.certificate.status.request
-```
-{
-  "timestamp": "2026-03-18T17:50:00Z",
-  "message_id": "op-cert-req-101",
-  "operator_id": "OP-77",
-  "drone_id": "DRN-C2-4048",
-  "digital_signature": "sha256:a1b2c3d4e5..."
-}
-```
-* v1.certificate.status.result
-```
-{
-  "timestamp": "2026-03-18T17:50:00Z",
-  "message_id": "op-cert-req-101",
-  "operator_id": "OP-77",
-  "drone_id": "DRN-C2-4048",
-  "certificate_status": "certified",
-  "certificate_id": "CERT-2026-999-XYZ",
-  "digital_signature": "sha256:f1g2h3j4k5..."
-}
-```
+
 * v1.firmware.certification.request
 
 Поля:
@@ -113,5 +92,72 @@
     "issued_by": "REGULATOR",
     "digital_signature": "REGULATOR_SIGNATURE"
   }
+}
+```
+* v1.system.certification.request
+
+Поля:
+```
+{
+  "request_id": "req-sys-001",
+  "timestamp": "2026-03-12T10:00:00Z",
+
+  "system_id": "NUS-Team2",
+  "system_type": "ground_control_station",
+
+  "repository_url": "https://github.com/example/nus-system",
+  "commit_hash": "d71763e430b45ee01012b005751861627d7b4147"
+}
+```
+* v1.system.certification.result
+
+Поля:
+```
+{
+  "request_id": "req-sys-001",
+  "timestamp": "2026-03-12T10:05:00Z",
+
+  "status": "CERTIFIED",
+
+  "certificate": {
+    "certificate_id": "CERT-SYS-2026-001",
+
+    "system_id": "NUS-Team2",
+    "system_type": "ground_control_station",
+
+    "security_goals_checked": [
+      "FW-SEC-01",
+      "FW-SEC-02",
+      "FW-SEC-03",
+      "SYS-SEC-01"
+    ],
+
+    "hash": "c3d2e1f0a9b8",
+    "digital_signature": "REGULATOR_SIGNATURE"
+  },
+
+  "errors": []
+}
+```
+* v1.certificate.status.request
+```
+{
+  "timestamp": "2026-03-18T17:50:00Z",
+  "message_id": "op-cert-req-101",
+  "operator_id": "OP-77",
+  "drone_id": "DRN-C2-4048",
+  "digital_signature": "sha256:a1b2c3d4e5..."
+}
+```
+* v1.certificate.status.result
+```
+{
+  "timestamp": "2026-03-18T17:50:00Z",
+  "message_id": "op-cert-req-101",
+  "operator_id": "OP-77",
+  "drone_id": "DRN-C2-4048",
+  "certificate_status": "certified",
+  "certificate_id": "CERT-2026-999-XYZ",
+  "digital_signature": "sha256:f1g2h3j4k5..."
 }
 ```
