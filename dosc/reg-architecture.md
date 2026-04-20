@@ -16,6 +16,7 @@
   "timestamp": "2026-03-18T17:50:00Z",
   "message_id": "op-cert-req-101",
   "operator_id": "OP-77",
+  "drone_id": "DRN-C2-4048",
   "certificate_status": "certified",
   "certificate_id": "CERT-2026-999-XYZ",
   "digital_signature": "sha256:f1g2h3j4k5..."
