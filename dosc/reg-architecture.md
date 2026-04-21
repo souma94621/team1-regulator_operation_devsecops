@@ -133,7 +133,7 @@
   "errors": []
 }
 ```
-* v1.certificate.status.request
+* v1.operator.certificate_status.request
 ```
 {
   "timestamp": "2026-03-18T17:50:00Z",
@@ -143,7 +143,7 @@
   "digital_signature": "sha256:a1b2c3d4e5..."
 }
 ```
-* v1.certificate.status.result
+* v1.operator.certificate_status.result
 ```
 {
   "timestamp": "2026-03-18T17:50:00Z",
