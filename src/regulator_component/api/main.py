@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict, Any, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 import logging
 
 from broker import BrokerService
